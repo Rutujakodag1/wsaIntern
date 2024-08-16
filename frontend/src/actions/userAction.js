@@ -1,6 +1,6 @@
 import axios from "axios";
 import { 
-    CLEAR_ERROR,
+    CLEAR_ERRORS,
     LOAD_USER_FAIL,
     LOAD_USER_REQUEST,
     LOAD_USER_SUCCESS,
@@ -10,7 +10,7 @@ import {
     REGISTER_USER_FAIL, 
     REGISTER_USER_REQUEST, 
     REGISTER_USER_SUCCESS
-} from "../constants/userConstant"
+} from "../constants/userConstant";
 //Login
 export const login =(email,password) =>async(dispatch)=>{
     try{
@@ -98,6 +98,6 @@ export const logout=()=>async(dispatch)=>{
 
 export const clearErrors=()=>async(dispatch)=>{
     dispatch({
-        type:CLEAR_ERROR,
+        type:CLEAR_ERRORS,
     });
 };
