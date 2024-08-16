@@ -1,8 +1,21 @@
 import React from 'react'
 import Search from './Search';
 import { Link } from 'react-router-dom';
+import { useSelector} from 'react-redux';
+import { useDispatch } from 'react-redux';
+import {logout} from "../../actions/userAction";  
+import { useAlert } from 'react-alert';
 
 export default function Header() {
+    const alert=useAlert();
+    const dispatch=useDispatch();
+    const {user,loading} =useSelector((state)=>state.auth);
+    const logoutHandler=()=>{
+        dispatch(logout());
+        alert.success("Logged Out Successfully");
+    };
+
+
   return (<nav className="navbar row sticky-top">
     <div className="col-12 col-md-3">
         <Link to="/">
@@ -20,20 +33,46 @@ export default function Header() {
         <span className="ml-1" id="cart_count">
             0
         </span>
-        {10>5 ? (
+        {user ? (
                 <>
                 <div className="ml-4 dropdown d-inline"  >
+                <Link 
+                    to="/" 
+                    className="btn dropdown-toggle text-white mr-4"
+                    type='button'
+                    id='dropDownMenuButton'
+                    data-toggle='dropdown'
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
                 <figure className="avatar avatar-nav">
                     <img src="/images/images.png" alt="avatar" className="rounded-circle" />
                 </figure>
-                <span style={{color: "white",fontWeight:"bolder"}}>Rutuja Kodag</span>
+                <span >
+                    {user && user.name}
+                </span>
+                </Link>
+                <div 
+                className="dropDown-Menu"
+                aria-labelledby='dropDownMenuButton'>
+                    <Link className='dropdown-item' to='/eats/orders/me/myOrders'>
+                    Orders
+                    </Link>
+                    <Link className='dropdown-item' to='/users/me'>
+                    Profile
+                    </Link>
+                    <Link className='dropdown-item' to='/' onClick={logoutHandler}>
+                    Logout
+                    </Link>
+                </div>
                 </div>
                 </>
             ):(
-                <div className="btn ml-4" id="login_btn">
+                !loading&&
+                (<Link to="/users/login" className="btn ml-4" id="login_btn">
                     Login
-                </div>
-            )
+                </Link>
+            ))
         }       
     </div>
   </nav>);
