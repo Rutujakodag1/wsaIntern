@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import useAlert from "react-alert";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+
 
 const Register = () => {
+  const alert =useAlert();
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+  const [user,setUser]=useState({
+    name:"",
+    email:"",
+    password:"",
+    passwordConfirm:"",
+    phoneNumber:"",
+  });
+  const {name,email,password,passwordConfirm,phoneNumber}=user;
+  const [avatar,setAvatar]=useState("");
+  const [avatarPreview,setAvatarPreview]=useState("/images/images.png");
+  const {isAuthenticated,error,loading}=useSelector(
+    (state)=>state.auth
+  );
+
+
+
+
   return (
     <>
       <div className="row wrapper">
