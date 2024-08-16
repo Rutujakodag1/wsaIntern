@@ -1,4 +1,5 @@
-import {legacy_createStore as createStore,
+import {
+    legacy_createStore as createStore,
     combineReducers,
     applyMiddleware,
     compose,
@@ -6,15 +7,17 @@ import {legacy_createStore as createStore,
 import thunk from "redux-thunk";
 import { restaurantReducer } from "./reducer/restaurantReducer";
 import { menuReducer } from "./reducer/menuReducer";
+import { authReducer } from "./reducer/userReducer";
 
 const reducer = combineReducers({
     restaurants: restaurantReducer,
-    menus:menuReducer,
+    menus: menuReducer,
+    auth: authReducer,
 });
 
-const composeenhancers=window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||compose;
-const middleware =[thunk];
-const store=createStore(
+const composeenhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const middleware = [thunk];
+const store = createStore(
     reducer,
     composeenhancers(applyMiddleware(...middleware))
 );
