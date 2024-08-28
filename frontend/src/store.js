@@ -7,12 +7,22 @@ import {
 import thunk from "redux-thunk";
 import { restaurantReducer } from "./reducer/restaurantReducer";
 import { menuReducer } from "./reducer/menuReducer";
-import { authReducer } from "./reducer/userReducer";
+import { authReducer, forgotPasswordReducer } from "./reducer/userReducer";
+import { userReducer } from "./reducer/userReducer";
+import { forgotPassword } from "./actions/userAction";
+import { cartReducer } from "./reducer/cartReducer";
+import { myOrderReducer, newOrderReducer, orderDetailsReducer } from "./reducer/orderReducer";
 
 const reducer = combineReducers({
     restaurants: restaurantReducer,
     menus: menuReducer,
     auth: authReducer,
+    user:userReducer,
+    forgotPassword:forgotPasswordReducer,
+    cart:cartReducer,
+    newOrder:newOrderReducer,
+    myOrders:myOrderReducer,
+    orderDetails:orderDetailsReducer,
 });
 
 const composeenhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

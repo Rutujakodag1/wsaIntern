@@ -10,6 +10,7 @@ export default function Header() {
     const alert=useAlert();
     const dispatch=useDispatch();
     const {user,loading} =useSelector((state)=>state.auth);
+    const {cartItems}=useSelector((state)=>state.cart);
     const logoutHandler=()=>{
         dispatch(logout());
         alert.success("Logged Out Successfully");
@@ -27,12 +28,16 @@ export default function Header() {
         <Search />
     </div>
     <div className="col-12 col-md-3 mt-4 mt-md-0">
+        <Link to={"/cart"} style={{textDecoration:"none"}}>
         <span className="ml-3" id="cart">
             Cart
         </span>
         <span className="ml-1" id="cart_count">
-            0
+            {cartItems.length}
         </span>
+        
+        </Link>
+
         {user ? (
                 <>
                 <div className="ml-4 dropdown d-inline"  >
@@ -46,14 +51,14 @@ export default function Header() {
                     aria-expanded="false"
                 >
                 <figure className="avatar avatar-nav">
-                    <img src="/images/images.png" alt="avatar" className="rounded-circle" />
+                    <img src={user.avatar.url} alt="avatar" className="rounded-circle" />
                 </figure>
                 <span >
                     {user && user.name}
                 </span>
                 </Link>
                 <div 
-                className="dropDown-Menu"
+                className="dropdown-menu"
                 aria-labelledby='dropDownMenuButton'>
                     <Link className='dropdown-item' to='/eats/orders/me/myOrders'>
                     Orders

@@ -1,4 +1,12 @@
-import { ALL_RESTAURANTS_REQUEST, ALL_RESTAURANTS_SUCCESS, CLEAR_ERROR, SORT_BY_RATINGS, SORT_BY_REVIEWS, TOGGLE_VEG_ONLY } from "../constants/restaurantConstant"
+import { 
+    ALL_RESTAURANTS_REQUEST,
+    ALL_RESTAURANTS_SUCCESS, 
+    ALL_RESTAURANTS_FAIL,
+    CLEAR_ERROR, SORT_BY_RATINGS, 
+    SORT_BY_REVIEWS, 
+    TOGGLE_VEG_ONLY,
+    
+} from "../constants/restaurantConstant"
 import axios from "axios";
 
 export const getRestaurants = () =>{
