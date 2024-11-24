@@ -5,7 +5,7 @@ import {clearErrors, forgotPassword} from "../../actions/userAction";
 
 const ForgotPassword = () => {
   const [email,setEmail]=useState("");
-  const alert=useAlert("");
+  const alert=useAlert();
   const dispatch=useDispatch();
 
   const {error,loading,message}=useSelector(

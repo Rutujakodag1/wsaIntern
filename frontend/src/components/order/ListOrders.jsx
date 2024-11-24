@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { MDBDataTable } from "mdbreact";
-import { FaRegEye, FaRupeeSign } from "react-icons/fa6";
+import { FaRegEye} from "react-icons/fa6";
+import {FaRupeeSign } from "react-icons/fa";
 import Loader from "../layouts/Loader";
 import {useAlert} from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
@@ -82,7 +83,7 @@ const ListOrders = () => {
 
         data.rows.push({
           restaurant:restaurant?.name||"unknown Restaurant",
-          numofItems:order.orderItems.length,
+          numOfItems:order.orderItems.length,
           amount:(
             <span>
             <FaRupeeSign />
@@ -116,7 +117,12 @@ const ListOrders = () => {
         {loading ? (
           <Loader />
         ) : (
-          <MDBDataTable data={setOrders()} className="px-3" bordered striped hover />
+          <MDBDataTable data={setOrders()} 
+          className="px-3" 
+          
+          bordered 
+          striped
+           hover />
           // <p>Your Order Details</p>
         )}
       </div>

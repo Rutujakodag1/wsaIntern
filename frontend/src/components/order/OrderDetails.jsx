@@ -16,7 +16,7 @@ const OrderDetails = () => {
     loading,
     error,
     order={},
-  }=useSelector((state)=>state.orderDetails);
+  }=useSelector((state)=>state.OrderDetails);
 
   const {
     deliveryInfo,
